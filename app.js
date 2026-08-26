@@ -85,7 +85,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     const password = document.getElementById('regPassword').value.trim();
     const role = document.getElementById('regRole').value;
 
-    loginAlert.style.display = 'none';
+    showLoginError('⏳ Connecting to 24/7 Cloud Server... Please wait...');
 
     try {
         const res = await fetch(`${API_BASE}/register`, {
@@ -96,6 +96,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         const data = await res.json();
 
         if (data.success) {
+            loginAlert.style.display = 'none';
             alert('✅ ' + data.message);
             toggleRegisterForm(false);
             quickFill(username, password);
@@ -103,7 +104,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
             showLoginError(data.message || 'Registration failed.');
         }
     } catch (err) {
-        showLoginError('Could not connect to Java REST Web Server');
+        showLoginError('⚠️ Connecting to Cloud Server... Please click Create Account again in 5 seconds!');
     }
 });
 

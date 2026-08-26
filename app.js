@@ -1,10 +1,5 @@
-// Dynamic API Base Auto-Detection for Desktop, Phone, Tablet, & Cloud!
-let customApiServer = localStorage.getItem('nexusflow_api_server');
-let API_BASE = customApiServer ? customApiServer : (
-    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? 'http://localhost:8080/api'
-        : 'https://nexusflow-backend-server.onrender.com/api'
-);
+// 24/7 Global Cloud REST API Server URL
+const API_BASE = 'https://nexusflow-backend-server.onrender.com/api';
 
 function setCustomServer(url) {
     if (!url) {
